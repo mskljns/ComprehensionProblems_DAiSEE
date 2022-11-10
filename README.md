@@ -3,6 +3,8 @@ This project
 
 
 # Model Development
+Run the Pipeline:
+
 ### Dataset
 The [DAiSEE](https://arxiv.org/abs/1609.01885) Dataset is a freely available dataset of multi-label video classification
  capturing engagement and emotional states (frustration, confusion and boredom) of students watching MOOCs.
@@ -23,7 +25,8 @@ Make sure that OpenFace is installed correctly according to your operating syste
 E.g. for Windows see the [Wiki](https://github.com/TadasBaltrusaitis/OpenFace/wiki/Windows-Installation).
 
 Run the following Python script:
-  $ \model_development\data\make_dataset.py
+
+    $ \model_development\data\make_dataset.py
 
 
 
