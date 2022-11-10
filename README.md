@@ -23,7 +23,7 @@ Make sure that OpenFace is installed correctly according to your operating syste
 E.g. for Windows see the [Wiki](https://github.com/TadasBaltrusaitis/OpenFace/wiki/Windows-Installation).
 
 Run the following Python script:
-> \model_development\data\make_dataset.py
+> ´\model_development\data\make_dataset.py`
 
 
 
