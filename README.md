@@ -10,7 +10,7 @@ The [DAiSEE](https://arxiv.org/abs/1609.01885) Dataset is a freely available dat
  directly loaded into Python via [deeplake](https://datasets.activeloop.ai/docs/ml/datasets/daisee-dataset/).
  
 
-![alt-text](C:\Users\Tatjana\PycharmProjects\ComProbProject\model_development\Daisee.png "DAiSEE Data Structure") 
+![alt-text](Daisee.png) 
   
  Download the dataset, create the folder 'data/raw' and put the dataset into that folder.  
 
