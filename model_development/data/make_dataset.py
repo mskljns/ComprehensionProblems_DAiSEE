@@ -10,14 +10,6 @@ import subprocess
 import time
 import sys
 
-python_path = os.path.dirname(os.path.abspath(sys.executable))
-openface_path = os.path.abspath(os.path.join(python_path, 'openface'))
-cwd = os.path.dirname(os.path.abspath(__file__))
-head = os.path.abspath(os.path.join(cwd, "../.."))
-data_path_daisee = os.path.join(head, 'data\\raw\\DAiSEE\\DataSet\\')
-data_path_raw = os.path.join(head, 'data\\raw\\')
-
-
 def make_dirs():
     test_path = os.path.join(data_path_raw, 'Test')
     if not os.path.isdir(test_path):
@@ -32,9 +24,14 @@ def make_dirs():
 
 
 def main():
+    python_path = os.path.dirname(os.path.abspath(sys.executable))
+    openface_path = os.path.abspath(os.path.join(python_path, 'openface'))
+    cwd = os.path.dirname(os.path.abspath(__file__))
+    head = os.path.abspath(os.path.join(cwd, "../.."))
+    data_path_daisee = os.path.join(head, 'data\\raw\\DAiSEE\\DataSet\\')
+    data_path_raw = os.path.join(head, 'data\\raw\\')
     make_dirs()
     data_set = ['Test', 'Train', 'Validation']
-
 
     for ttv in data_set:
         subjects = os.listdir(data_path_daisee + ttv + '\\')
