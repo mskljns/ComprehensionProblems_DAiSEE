@@ -8,9 +8,11 @@ import pandas as pd
 from model_development.features import utils as helper
 
 cwd = os.path.dirname(os.path.abspath(__file__))
-head = os.path.abspath(os.path.join(cwd, os.pardir))
+head = os.path.abspath(os.path.join(cwd, "../.."))
 data_path = os.path.join(head, 'data\\raw\\')
-data_path2save = os.path.join(head, 'data\\interim\\')
+interim_path = os.path.join(head, 'data\\interim\\')
+if not os.path.isdir(interim_path):
+    os.mkdir(interim_path)
 
 dataset = ['Test', 'Train', 'Validation']
 
@@ -31,7 +33,10 @@ feature_names = ['clipID_avi', 'clipID', 'AU01_c_mean', 'AU02_c_mean', 'AU04_c_m
                  'skew_right_avg', 'skew_right_max']
 
 for ttv in dataset:
-    path_2save = data_path2save + ttv + '\\calculated_features'
+    path_calc_feat = interim_path + 'calculated_features\\'
+    if not os.path.isdir(path_calc_feat):
+        os.mkdir(path_calc_feat)
+    path_2save = interim_path + 'calculated_features\\' + ttv + '\\'
     if not os.path.isdir(path_2save):
         os.mkdir(path_2save)
 
