@@ -36,7 +36,7 @@ for ttv in dataset:
     path_calc_feat = interim_path + 'calculated_features\\'
     if not os.path.isdir(path_calc_feat):
         os.mkdir(path_calc_feat)
-    path_2save = interim_path + 'calculated_features\\' + ttv + '\\'
+    path_2save = interim_path + 'calculated_features\\'
     if not os.path.isdir(path_2save):
         os.mkdir(path_2save)
 
