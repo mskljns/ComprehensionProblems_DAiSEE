@@ -6,7 +6,7 @@ video. The learner must take a comprehension test directly after the explanation
 comprehension difficulties. In this case, the tutorial system suggests a new explanation in which the plural rules are 
 shown again in summary.
 
-![archi](Architecture.PNG)
+![archi](fig/Architecture.PNG)
 
 # Model Development
 
@@ -19,7 +19,7 @@ The [DAiSEE](https://arxiv.org/abs/1609.01885) Dataset is a freely available dat
 
 Download the dataset, create the folder 'data/raw' and put the dataset into that folder.  
 
-![alt-text](Daisee.png) 
+![alt-text](fig/Daisee.png) 
   
 
 
