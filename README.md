@@ -6,7 +6,7 @@ video. The learner must take a comprehension test directly after the explanation
 comprehension difficulties. In this case, the tutorial system suggests a new explanation in which the plural rules are 
 shown again in summary.
 
-![](Architecture.PNG)
+![archi](fig/Architecture.PNG)
 
 # Model Development
 
@@ -33,23 +33,21 @@ E.g. for Windows see the [Wiki](https://github.com/TadasBaltrusaitis/OpenFace/wi
 
 Run the following Python script:
 
-    $ make_dataset.py
+    $ \model_development\data\make_dataset.py
 
 
 
 ### Data Preprocessing
 All features are calculated based on Action Units, landmarks and other parameters provided by OpenFace. 
 For more information see the project report. The resulting data file is saved as a single CSV file containing all data in 
-the folder data\interim\calculated_features\.
+the folder data\interim\\...set\calculated_features.
 
 Run the following Python script:
 
-    $ calculate_features.py
+    $ \model_development\features\feature_calculation.py
 
 
-Since the labels for the test, train and validation set are not ordered and some videos aren't even labelled, each video 
-has to be checked. Based on the original label an adaptive alternative was developed to detect comprehension 
-problems. For a detailed explanation of how the labels were developed look at the project report.
+Since the label were set new th
 
     $ merge_labels2data.py
 
@@ -57,7 +55,7 @@ problems. For a detailed explanation of how the labels were developed look at th
 The calculated features need to be normalized and further data manipulation has to be done. Figures of all features will
 be stored in 'model_development\preprocessing\figures\data_distribution\' that show the data distribution before and 
 after data manipulation. 
-The resulting data will be saved in the following folder: 'data\interim\data_preprocessed\'
+The resulting data will be saved in the following folder: 'data\interim\...set\data_preprocessed\'
 
     $ data_preprocessing.py
 
@@ -67,7 +65,7 @@ Some plots such as feature importance plots are saved in the folder
 
 The best features are saved in a list in 'Selected_Features.json' in the same folder.
 
-    $ feature_selection.py
+    $ man_feature_selection.py
 
 ### Feature Selection
 
