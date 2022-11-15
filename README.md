@@ -33,18 +33,18 @@ E.g. for Windows see the [Wiki](https://github.com/TadasBaltrusaitis/OpenFace/wi
 
 Run the following Python script:
 
-    $ \model_development\data\make_dataset.py
+    $ make_dataset.py
 
 
 
 ### Data Preprocessing
 All features are calculated based on Action Units, landmarks and other parameters provided by OpenFace. 
 For more information see the project report. The resulting data file is saved as a single CSV file containing all data in 
-the folder data\interim\\...set\calculated_features.
+the folder data\interim\calculated_features\.
 
 Run the following Python script:
 
-    $ \model_development\features\feature_calculation.py
+    $ feature_calculation.py
 
 
 Since the label were set new th
@@ -55,7 +55,7 @@ Since the label were set new th
 The calculated features need to be normalized and further data manipulation has to be done. Figures of all features will
 be stored in 'model_development\preprocessing\figures\data_distribution\' that show the data distribution before and 
 after data manipulation. 
-The resulting data will be saved in the following folder: 'data\interim\...set\data_preprocessed\'
+The resulting data will be saved in the following folder: 'data\interim\data_preprocessed\'
 
     $ data_preprocessing.py
 
