@@ -6,7 +6,7 @@ video. The learner must take a comprehension test directly after the explanation
 comprehension difficulties. In this case, the tutorial system suggests a new explanation in which the plural rules are 
 shown again in summary.
 
-![archi](Architecture.PNG)
+![](Architecture.PNG)
 
 # Model Development
 
@@ -19,7 +19,7 @@ The [DAiSEE](https://arxiv.org/abs/1609.01885) Dataset is a freely available dat
 
 Download the dataset, create the folder 'data/raw' and put the dataset into that folder.  
 
-![alt-text](Daisee.png) 
+![alt-text](fig/Daisee.png) 
   
 
 
@@ -33,21 +33,23 @@ E.g. for Windows see the [Wiki](https://github.com/TadasBaltrusaitis/OpenFace/wi
 
 Run the following Python script:
 
-    $ \model_development\data\make_dataset.py
+    $ make_dataset.py
 
 
 
 ### Data Preprocessing
 All features are calculated based on Action Units, landmarks and other parameters provided by OpenFace. 
 For more information see the project report. The resulting data file is saved as a single CSV file containing all data in 
-the folder data\interim\\...set\calculated_features.
+the folder data\interim\calculated_features\.
 
 Run the following Python script:
 
-    $ \model_development\features\feature_calculation.py
+    $ calculate_features.py
 
 
-Since the label were set new th
+Since the labels for the test, train and validation set are not ordered and some videos aren't even labelled, each video 
+has to be checked. Based on the original label an adaptive alternative was developed to detect comprehension 
+problems. For a detailed explanation of how the labels were developed look at the project report.
 
     $ merge_labels2data.py
 
@@ -55,7 +57,7 @@ Since the label were set new th
 The calculated features need to be normalized and further data manipulation has to be done. Figures of all features will
 be stored in 'model_development\preprocessing\figures\data_distribution\' that show the data distribution before and 
 after data manipulation. 
-The resulting data will be saved in the following folder: 'data\interim\...set\data_preprocessed\'
+The resulting data will be saved in the following folder: 'data\interim\data_preprocessed\'
 
     $ data_preprocessing.py
 
@@ -65,7 +67,7 @@ Some plots such as feature importance plots are saved in the folder
 
 The best features are saved in a list in 'Selected_Features.json' in the same folder.
 
-    $ man_feature_selection.py
+    $ feature_selection.py
 
 ### Feature Selection
 

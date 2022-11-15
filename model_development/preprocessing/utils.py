@@ -278,10 +278,29 @@ def feature_importance(X_train, y_train, data_version, path):
 
     return rf.feature_importances_
 
+
+def rfecv_classic(X_train, y_train):
+    from sklearn.feature_selection import RFECV
+    rfecv = RFECV(estimator=LogisticRegression(max_iter=5000, solver='liblinear'), step=1, min_features_to_select=5, cv=10, scoring='accuracy')
+    rfecv = rfecv.fit(X_train, y_train.values.ravel())
+    print('Optimal number of features :', rfecv.n_features_)
+    print('Best features :', X_train.columns[rfecv.support_])
+    print(rfecv.grid_scores_)
+
+    plt.figure()
+    plt.xlabel("Number of features selected")
+    plt.ylabel("Cross validation score (accuracy)")
+    plt.title('Model: Logistic Regression')
+    min_features_to_select = 5
+    #plt.plot(range(min_features_to_select, len(rfe_cv.grid_scores_) + min_features_to_select),
+     #   rfe_cv.grid_scores_,)
+   #plt.plot(range(1, len(rfecv.grid_scores_) + 1), rfecv.grid_scores_)
+    plt.plot(range(1, len(rfecv.grid_scores_) + 1), np.mean(rfecv.grid_scores_, axis=1))
+    plt.show()
+
+
 from sklearn.feature_selection import RFECV
 from sklearn.linear_model import LogisticRegression
-
-
 def rfecv(X_train, y_train):
     rfe_cv = RFECV(estimator=LogisticRegression(max_iter=5000, solver='liblinear'), step=1, min_features_to_select=5, cv=3, scoring='accuracy')
     rfe_cv = rfe_cv.fit(X_train, y_train.values.ravel())
@@ -312,3 +331,20 @@ def rfecv(X_train, y_train):
     # generate_accuracy_and_heatmap(rfecv_model, x_validation_rfecv, y_validation.values.ravel())
 
     # return rfecv.grid_scores_, X_train.columns[rfecv.support_]
+
+
+def probatus_rfecv(X, y):
+    from probatus.feature_elimination import ShapRFECV
+    from sklearn.model_selection import RandomizedSearchCV
+    import numpy as np
+    import pandas as pd
+    import lightgbm
+
+    clf = lightgbm.LGBMClassifier(max_depth=5, class_weight='balanced')
+    param_grid = {'n_estimators': [5, 7, 10], 'num_leaves': [3, 5, 7, 10]}
+    search = RandomizedSearchCV(clf, param_grid, cv=5, scoring='roc_auc', refit=False)
+
+    shap_elimination = ShapRFECV(search, step=0.2, cv=10, scoring='roc_auc', n_jobs=3)
+    report = shap_elimination.fit_compute(X, y, check_additivity=False)
+
+    performance_plot = shap_elimination.plot()
